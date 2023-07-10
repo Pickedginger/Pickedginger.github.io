@@ -1,0 +1,520 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+body {
+  color: #333;
+  font-size: 1rem;
+  font-family: 'Noto Sans', 'Noto Sans JP', sans-serif;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+li {
+  list-style: none;
+}
+/*
+コンテンツ幅を設定するための共通クラス
+*/
+.wrapper {
+  max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+.readmore {
+  font-size: 0.875rem;
+  text-align: center;
+}
+/*
+疑似要素で下線を設定するために、「position: relative;」を設定
+*/
+.readmore a {
+  padding-bottom: 1px;
+  color: #333;
+  position: relative;
+}
+/*
+「position: absolute;」を設定し、left、bottomで下線の位置を調整
+widthとheightで線の長さと高さを設定
+疑似要素で線を表示させるためには、「content: '';」を設定すること
+「transition: all 200ms ease;」でホバー時の速度などを設定
+*/
+.readmore a::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: #333;
+  transition: all 200ms ease;
+}
+/*
+ホバー時の下線の設定
+「opacity: 0;」下線を非表示
+「transform: translateY(3px);」下に3px移動
+→下に3px移動しながら下線を非表示にする
+*/
+.readmore a:hover::after {
+  opacity: 0;
+  transform: translateY(3px);
+}
+
+/*-------------------------------------------
+header
+-------------------------------------------*/
+/*
+「position: fixed;」でヘッダーを固定し、「z-index: 10;」で前面に表示
+※他のコンテンツでpositionをrelative、absolute、fixedのいずれかに
+設定している場合は、z-indexの数値が大きい方が前面に表示される
+*/
+#header {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+}
+#header .site-title {
+  padding: 20px 16px;
+  line-height: 1px;
+}
+/*
+「display: inline-block;」でリンクを親要素の範囲に広げる
+※blockを指定すると横幅いっぱいまで広がってしまうため、
+inline-blockを設定している
+*/
+#header .site-title a {
+  display: inline-block;
+}
+#navi {
+  background-color: #333;
+}
+#navi a {
+  color: #fff;
+}
+#navi ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#navi li {
+  font-size: 0.875rem;
+  padding: 10px 60px 10px 0;
+}
+
+/*-------------------------------------------
+pickup
+-------------------------------------------*/
+#pickup {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 150px;
+  margin-bottom: 60px;
+}
+#pickup article {
+  width: 32%;
+}
+#pickup .article-title {
+  font-size: 1rem;
+  margin: 10px 0 15px 0;
+}
+
+/*-------------------------------------------
+container
+-------------------------------------------*/
+#container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+main {
+  width: 65%;
+}
+main article {
+  margin-bottom: 80px;
+}
+main .article-title {
+  font-size: 1.5rem;
+  margin: 10px 0 15px 0;
+}
+main ul {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+main li {
+  font-size: 0.875rem;
+  margin-right: 20px;
+}
+main .text {
+  padding: 10px 40px 30px 40px;
+}
+
+/*-------------------------------------------
+aside
+-------------------------------------------*/
+#sidebar {
+  width: 33%;
+  padding: 20px;
+}
+#sidebar .side-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.author {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.author img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.author .profile {
+  font-size: 0.875rem;
+  text-align: left;
+}
+.ranking {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.ranking article {
+  margin-bottom: 30px;
+}
+.ranking .article-title {
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: left;
+}
+.archive {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.archive ul {
+  border-bottom: solid  1px #777;
+}
+.archive li {
+  font-size: 0.875rem;
+  border-top: solid  1px #777;
+  padding: 20px;
+  text-align: left;
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+#footer {
+  font-size: 0.875rem;
+  background-color: #f7f7f7;
+}
+#footer .content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#footer .item {
+  width: 30%;
+}
+#footer .footer-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+#footer ul.about-list {
+  margin: 20px 0;
+}
+#footer ul.about-list li {
+  margin-bottom: 5px;
+}
+#footer ul.about-list .arrow {
+  position: relative;
+  display: inline-block;
+  padding-left: 12px;
+  color: #333;
+}
+/*
+疑似要素で三角矢印を表示
+border～プロパティで三角を作り、positionで位置調整
+*/
+#footer ul.about-list .arrow::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #333;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+}
+#footer .menu-list {
+  border-bottom: solid  1px #777;
+}
+#footer .menu-list > li {
+  border-top: solid  1px #777;
+  padding: 15px;
+  text-align: left;
+}
+#footer .copyright {
+  font-size: 0.750rem;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/*-------------------------------------------
+SP
+-------------------------------------------*/
+@media screen and (max-width: 767px) {
+  /*-------------------------------------------
+  header
+  -------------------------------------------*/
+  #header .site-title {
+    padding: 20px 16px;
+  }
+  #navi {
+    /* 横スクロールを表示 */
+    overflow-x: scroll;
+  }
+
+  /*-------------------------------------------
+  pickup
+  -------------------------------------------*/
+  #pickup {
+    flex-direction: column;
+    padding-top: 140px;
+  }
+  #pickup article {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  /*-------------------------------------------
+  container
+  -------------------------------------------*/
+  #container {
+    flex-direction: column;
+  }
+  main {
+    width: 100%;
+  }
+
+  /*-------------------------------------------
+  aside
+  -------------------------------------------*/
+  #sidebar {
+    width: 100%;
+    padding: 0;
+  }
+
+  /*-------------------------------------------
+  footer
+  -------------------------------------------*/
+  #footer .content {
+    flex-direction: column;
+  }
+  #footer .item {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+h1 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 2px black;
+}
+
+h2 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 2px black;
+}
+
+.toc-005 {
+  margin-bottom: 30px;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+}
+
+.toc-005 div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 10px 0;
+  background-color: #000000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.toc-005 div::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M3.8%2017.2h-3c-.5%200-.8.4-.8.8v3c0%20.4.3.8.8.8h3c.4%200%20.8-.3.8-.8v-3c-.1-.4-.4-.8-.8-.8zm0-15h-3c-.5%200-.8.4-.8.8v3c0%20.4.3.8.8.8h3c.4%200%20.8-.3.8-.8V3c-.1-.4-.4-.8-.8-.8zm0%207.6h-3c-.5%200-.8.3-.8.7v3c0%20.4.3.8.8.8h3c.4%200%20.8-.3.8-.8v-3c-.1-.4-.4-.7-.8-.7zM23.2%2018h-15c-.4%200-.8.3-.8.8v1.5c0%20.4.3.8.8.8h15c.4%200%20.8-.3.8-.8v-1.5c0-.5-.3-.8-.8-.8zm0-15h-15c-.4%200-.7.3-.7.8v1.5c0%20.4.3.7.7.7h15c.5%200%20.8-.3.8-.8V3.8c0-.5-.3-.8-.8-.8zm0%207.5h-15c-.4%200-.8.3-.8.8v1.5c0%20.4.3.8.8.8h15c.4%200%20.8-.3.8-.8v-1.5c0-.5-.3-.8-.8-.8z%22%2F%3E%3C%2Fsvg%3E');
+  content: '';
+}
+
+.toc-005 ol {
+  list-style-type: decimal;
+  margin: 0;
+  overflow: hidden;
+}
+
+.toc-005 > ol {
+  padding: 1em 1em 1em 3em;
+}
+
+.toc-005 ol ol {
+  margin-top: 5px;
+  padding-left: 1.1em;
+}
+
+.toc-005 li {
+  padding: 5px 0;
+  font-weight: 600;
+}
+
+.toc-005 ol ol li {
+  font-weight: 500;
+  font-size: .9em;
+}
+
+.toc-005 a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*二重線*/
+.quebox {
+  margin: 2em auto;
+  padding:2em;/*内側余白*/
+  border:double 5px #CCCFD6;/*線の種類・太さ・色*/
+  background-color:#EAEBEE;
+  }
+
+/*角括弧*/
+.ansbox{
+  padding:2em;/*内側余白*/
+  position: relative;
+}
+
+.ansbox::after,
+.ansbox::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  width: 0.75em;
+}
+
+.ansbox::before {
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  bottom: 0;
+  left: 0;
+}
+.ansbox::after {
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-top: 1px solid;
+  bottom: 0;
+  right: 0;
+}
+
+/*左右に三角形をつける*/
+.rmkbox{
+  margin: 2em auto;
+  padding:2em;/*内側余白*/
+  position: relative;
+  }
+  
+  .rmkbox:before{
+  border-bottom:30px solid transparent;
+  border-left:30px solid #c6d4c6;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  }
+  
+  .rmkbox:after{
+  border-left:30px solid transparent;
+  border-bottom:30px solid #c6d4c6;
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  }
+
+  .open {
+    cursor:pointer;
+  }
+  #pop-up {
+    display: none;
+  }
+  .overlay {
+    display: none;
+  }
+  #pop-up:checked + .overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    max-width: 900px;
+      padding: 20px;
+    height: 300px;
+    background-color: #f0ffff;
+    border-radius: 4px;
+    align-items: center;
+    transform: translate(-50%, -50%);
+  }
+  .close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor:pointer;
+  }
+  
+  .poptitle{
+      margin:2em 0;
+      position: relative;
+      padding: 0.5em 1.5em;
+      border-top: solid 1px gray;
+      border-bottom: solid 1px gray;
+  }
+  
+  .poptitle h4 {
+      margin: 0; 
+      padding: 0;
+  }
+
+  .eqation {
+    width: 100%;
+
+  white-space: nowrap;
+  overflow-x: scroll;
+  border: solid 1px #696969;
+}
