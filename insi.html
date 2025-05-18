@@ -228,10 +228,11 @@ f(e_3) &=& 3e_1+4e_2
         <div class="rmkbox">
           <p>実数値の\(n\)変数関数\(f\)が点\(x \in \mathbb{R}^n\)で全微分可能であるか確かめるには次のように確認すればよい.</p>
           <ol>
-  <li>\(f\)がその点で連続かどうかを確かめる(不連続なら全微分可能)</li>
-  <li>\(f_{x_1},f_{x_2},\ldots,f_{x_n}\)を計算する(偏微分不可能なら全微分不可能)</li>
-  <li>\(\displaystyle{\lim_{h \to 0}\frac{f(x+h)-f(x)-\sum_{k=1}^n f_{x_k}(x)h_k}{\|h\|} \to 0}\)なら全微分可能.</li>
+  <li>1.\(f\)がその点で連続かどうかを確かめる(不連続なら全微分可能)</li>
+  <li>2.\(f_{x_1},f_{x_2},\ldots,f_{x_n}\)を計算する(偏微分不可能なら全微分不可能)</li>
+  <li>3.\(\displaystyle{\lim_{h \to 0}\frac{f(x+h)-f(x)-\sum_{k=1}^n f_{x_k}(x)h_k}{\|h\|} = 0}\)なら全微分可能.</li>
 </ol>
+          <p>(ただし,\(x=(x_1,x_2,\ldots,x_n),h=(h_1,h_2,\ldots,h_n),\)でノルムはユークリッド距離.)</p>
         </div>
         <br>
         <a href="#mokuji">目次に戻る</a>
