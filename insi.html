@@ -217,12 +217,12 @@ f(e_3) &=& 3e_1+4e_2
         <button class="accordion">解答</button>
 <div class="panel">
   <p>
-    まず,~\(f\)は明らかに連続である.また,
+    まず,\(f\)は明らかに連続である.また,
   </p>
-  <p>\(f_x(0,0)=\lim_{h \to 0}\frac{f(h,0)-f(0,0)}{h}=0\),</p>
-  <p>\(f_y(0,0)=\lim_{h \to 0}\frac{f(0,h)-f(0,0)}{h}=0\)である.さらに</p>
-  <p>\(\frac{f(h,k)-f(0,0)-f_x(0,0)h-f_y(0,0)k}{\sqrt{h^2+k^2}}=\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}\)である.ここで\(k=mh\) を保つように\((h,k) \to (0,0)\) とすると</p>
-  <p>\(\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}=\frac{\sqrt{|m|}}{\sqrt{(m^2+1)}}\).</p>
+  <p>\(\displaystyle{f_x(0,0)=\lim_{h \to 0}\frac{f(h,0)-f(0,0)}{h}=0}\),</p>
+  <p>\(\displaystyle{f_y(0,0)=\lim_{h \to 0}\frac{f(0,h)-f(0,0)}{h}=0}\)である.さらに</p>
+  <p>\(\displaystyle{\frac{f(h,k)-f(0,0)-f_x(0,0)h-f_y(0,0)k}{\sqrt{h^2+k^2}}=\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}}\)である.ここで\(k=mh\) を保つように\((h,k) \to (0,0)\) とすると</p>
+  <p>\(\displaystyle{\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}=\frac{\sqrt{|m|}}{\sqrt{(m^2+1)}}}\).</p>
   <p>一方先に \(h \to 0\)としてから \(k \to 0\)とすると\(0\)になるから点\((0,0)\)で全微分不可能.</p>
 </div>
         <div class="rmkbox">
@@ -230,7 +230,7 @@ f(e_3) &=& 3e_1+4e_2
           <ol>
   <li>\(f\)がその点で連続かどうかを確かめる(不連続なら全微分可能)</li>
   <li>\(f_{x_1},f_{x_2},\ldots,f_{x_n}\)を計算する(偏微分不可能なら全微分不可能)</li>
-  <li>\(\lim_{h \to 0}\)\frac{f(x+h)-f(x)-\sum_{k=1}^n f_{x_k}(x)h_k}{\|h\|} \to 0なら全微分可能.</li>
+  <li>\(\displaystyle{\lim_{h \to 0}\frac{f(x+h)-f(x)-\sum_{k=1}^n f_{x_k}(x)h_k}{\|h\|} \to 0}\)なら全微分可能.</li>
 </ol>
         </div>
         <br>
