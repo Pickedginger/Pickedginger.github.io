@@ -34,6 +34,8 @@ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       <main>
         <h1>院試で覚えないといけないこと</h1>
 
+        自分の備忘録としてまとめています.間違いなどある可能性があるので自己責任でお願いします.
+
         <div class="toc-005">
             <div>
                 <p id="mokuji">目次</p>
@@ -42,14 +44,12 @@ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
                 <li><a href="#senkei">線形代数</a></li>
                 <ol>
                     <li><a href="#rank">行列の階数</a></li>
-                </ol>
-                <ol>
                     <li><a href="#kerim">線形写像の表現行列、核、像の基底</a></li>
                 </ol>
                 <li>
-                    <a href="#">微分積分</a>
+                    <a href="#bibunsekibun">微分積分</a>
                     <ol>
-                        <li><a href="#">解答</a></li>
+                        <li><a href="#zenbibunkanousei">全微分可能性の確認</a></li>
                         <li><a href="#">コメント</a></li>
                     </ol>
                 </li>
@@ -200,6 +200,49 @@ f(e_3) &=& 3e_1+4e_2
           <p>\(\mathrm{Im}f\)の基底を求めるときの３つ目の等号は定数倍した列ベクトルの足し引きをしてcを消去している.列基本変形は列ベクトルの足し引きをしているだけなので
             変形前の列ベクトルが生成する部分空間と変形後の列ベクトルが生成する部分空間は一致する.よって列基本変形を行った方が簡単に基底を求められる.</p>
         </div>
+        <br>
+        <a href="#mokuji">目次に戻る</a>
+
+        <h2 id="bibunsekibun">微分積分</h2>
+
+        <h3 id="zenbibunkanousei">全微分可能性の確認</h3>
+
+        <div class="quebox">
+            <p>
+              \(f(x,y)=\sqrt{|xy|}\) の点 \((0,0)\) における全微分可能性を確認せよ.
+            </p>
+           </div>
+
+        <h3>解答</h3>
+        <button class="accordion">解答</button>
+<div class="panel">
+  <p>
+    まず,~\(f\)は明らかに連続である.また,
+  </p>
+  <p>\(f_x(0,0)=\lim_{h \to 0}\frac{f(h,0)-f(0,0)}{h}=0\),</p>
+  <p>\(f_y(0,0)=\lim_{h \to 0}\frac{f(0,h)-f(0,0)}{h}=0\)である.さらに</p>
+  <p>\(\frac{f(h,k)-f(0,0)-f_x(0,0)h-f_y(0,0)k}{\sqrt{h^2+k^2}}=\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}\)である.ここで\(k=mh\) を保つように\((h,k) \to (0,0)\) とすると</p>
+  <p>\(\frac{\sqrt{|hk|}}{\sqrt{h^2+k^2}}=\frac{\sqrt{|m|}}{\sqrt{(m^2+1)}}\).</p>
+  <p>一方先に \(h \to 0\)としてから \(k \to 0\)とすると\(0\)になるから点\((0,0)\)で全微分不可能.</p>
+</div>
+        <br>
+        <a href="#mokuji">目次に戻る</a>
+
+        <h3 id="#"></h3>
+
+        <div class="quebox">
+            <p>
+              
+            </p>
+           </div>
+
+        <h3>解答</h3>
+        <button class="accordion">解答</button>
+<div class="panel">
+  <p>
+    
+  </p>
+</div>
         <br>
         <a href="#mokuji">目次に戻る</a>
 
