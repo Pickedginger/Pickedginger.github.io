@@ -547,9 +547,10 @@ h2 {
 /*スクロールボックス*/
 
 .scroll-box {
-      width: 300px;
-      height: 150px;
-      overflow: auto;         /* ← スクロールを有効にする */
-      border: 1px solid #ccc; /* 見やすくするための枠線 */
-      padding: 10px;
-    }
+  width: 90%;         /* 画面の90%の幅にする */
+  max-width: 600px;   /* 広すぎないように最大幅も設定 */
+  height: 150px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
