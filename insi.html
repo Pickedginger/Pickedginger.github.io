@@ -70,26 +70,22 @@ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
         <button class="accordion">解答</button>
 <div class="panel">
   <p>行基本変形によって階段行列にする.</p>
-                    <p>\begin{eqnarray}\begin{pmatrix}
+                    <p>\begin{pmatrix}
 1 & 2 & 2 \\
 2 & 3 & 4 \\
 -1 & 1 & -2 \\
 3 & 0 & 6            
-\end{pmatrix} \\
-\downarrow \\
-\begin{pmatrix}
+\end{pmatrix} \(\to\) \begin{pmatrix}
 1 & 2 & 2 \\
 0 & -1 & 0 \\
 0 & 3 & 0 \\
 0 & -6 & 0            
-\end{pmatrix} \\
-\downarrow \\
-\begin{pmatrix}
+\end{pmatrix} \(\to\) \begin{pmatrix}
 1 & 2 & 2 \\
 0 & 1 & 0 \\
 0 & 0 & 0 \\
 0 & 0 & 0            
-\end{pmatrix}\end{eqnarray}</p>
+\end{pmatrix}</p>
   <p>よって \(\mathrm{rank}\) は\(2\).</p>
 </div>
         <br>
@@ -152,7 +148,31 @@ f(e_3) &=& 3e_1+4e_2
     \end{pmatrix},\begin{pmatrix}
     0 \\
     1
-    \end{pmatrix}\).</p>
+    \end{pmatrix}\).最後に \(\mathrm{Ker}f\)の基底を求める.表現行列に行基本変形を施すと</p>
+  <p>\begin{pmatrix}
+1 & 1 & 3 \\
+2 & 3 & 4            
+\end{pmatrix} \(\to\) \begin{pmatrix}
+1 & 1 & 3 \\
+0 & 1 & -2             
+\end{pmatrix}</p>
+  <p>であるから</p>
+  <p>\begin{eqnarray}
+    \mathrm{Ker}f &=&\{x \in \mathbb{R}^3 \mid f(x)=0\} \\
+    &=& \left\{\begin{pmatrix}
+    a \\
+    b \\
+    c\end{pmatrix} \mid a\begin{pmatrix}
+    1 \\
+    0
+    \end{pmatrix}+b\begin{pmatrix}
+    1 \\
+    1
+    \end{pmatrix}+c\begin{pmatrix}
+    3 \\
+    -2
+    \end{pmatrix}=0\right\}
+  \end{eqnarray}</p>
 </div>
         <br>
         <a href="#mokuji">目次に戻る</a>
