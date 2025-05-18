@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>べにしょうがのホームページ</title>
+    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキス">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="">
+    <link href="" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" id="MathJax-script" async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </head>
 
+  <body>
+    <header id="header">
+      <h1 class="site-title wrapper">
+        <a href="index.html">べにしょうがのホームページ</a>
+      </h1>
+      <nav id="navi">
+        <ul class="wrapper">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="#">分野</a></li>
+          <li><a href="#">ABOUT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="pickup" class="wrapper">
+    </div>
+
+    <div id="container" class="wrapper">
+      <main>
+        <h1>院試で覚えないといけないこと</h1>
+
+        <div class="toc-005">
+            <div>
+                目次
+            </div>
+            <ol>
+                <li><a href="q1">問題1</a></li>
+                <ol>
+                    <li><a href="#">解答</a></li>
+                </ol>
+                <li>
+                    <a href="#">問題2</a>
+                    <ol>
+                        <li><a href="#">解答</a></li>
+                        <li><a href="#">コメント</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+        <h2 name="q1">問題1</h2>
+
+        <div class="quebox">
+            ここに問題を書く。以下はテスト。
+            <p>\(f:\mathbb{R}^2 \to \mathbb{R}\)は\(\mathbb{R}^2\)上一様連続か.</p>
+           </div>
+
+        <h3>必要な定義・定理</h3>
+        クリックすると定義を参照できます。<br>
+
+        <label class="open" for="pop-up"><span style="border-bottom: solid 1px red;">一様連続</span></label>
+                <input type="checkbox" id="pop-up">
+                <div class="overlay">
+                    <div class="window">
+                        <label class="close" for="pop-up">閉じる</label>
+                    <div class="poptitle">
+                        <h4>関数の一様連続の定義</h4>
+                    </div>
+                        <p>関数 \(f:\mathbb{R}^d \to \mathbb{R}\)が\(\mathbb{R}^d\)上一様連続であるとは,次をみたすこと.</p>
+                    <div class="eqation">
+                    <h4 style="text-align:center">\(\forall \varepsilon>0,\exists \delta>0 \quad \mathrm{s.t.} \quad \forall x,y \in \mathbb{R}^d(|x-y|<\delta \Longrightarrow |f(x)-f(y)|<\varepsilon)\)</h4>
+                    </div>
+                    </div>
+                </div>
+
+        <h2>解答</h2>
+
+        <div class="ansbox">
+            ここに解答を書く。以下はテスト。
+            <p>\(f(x,y)=\sqrt{x^2+y^2}\) は \(\mathbb{R}^2\) 上一様連続である.実際,(中略)したがって,<br>
+                \[
+                0 < d(p,q) < \varepsilon \Longrightarrow |f(p)-f(q)| < \varepsilon
+                \]</p>
+            </div>
+
+        <h3>コメント</h3>
+        <div class="rmkbox">
+            ここにコメントを書く。
+            </div>
+      </main>
+
+      <aside id="sidebar">
+        <section class="author">
+          <h3 class="side-title">ABOUT</h3>
+          <p class="profile">
+            大学数学とHTMLの勉強の為に問題と解答をまとめています。
+          </p>
+        </section>
+
+        <section class="ranking">
+          <h3 class="side-title">サイトマップ</h3>
+          <article>
+            <a href="#">
+              <h4 class="article-title"><div style="text-align: center;">集合と位相</div></h4>
+            </a>
+          </article>
+
+          <article>
+            <a href="#">
+              <h4 class="article-title"><div style="text-align: center;">解析学</div></h4>
+            </a>
+          </article>
+
+          <article>
+            <a href="#">
+              <h4 class="article-title"><div style="text-align: center;">代数学</div></h4>
+            </a>
+          </article>
+
+        <article>
+          <a href="#">
+            <h4 class="article-title"><div style="text-align: center;">幾何学</div></h4>
+          </a>
+        </article>
+
+      <article>
+        <a href="#">
+          <h4 class="article-title"><div style="text-align: center;">その他</div></h4>
+        </a>
+      </article>
+    </section>
+
+        <section class="archive">
+          <h3 class="side-title">分野</h3>
+          <ul>
+            <li><a href="#">微分積分学</a>(XX)</li>
+            <li><a href="#">線形代数学</a>(XX)</li>
+            <li><a href="#">集合と位相</a>(XX)</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <footer id="footer">
+      <div class="content wrapper">
+        <section class="item">
+          <h3 class="footer-title">ABOUT</h3>
+          <p>
+            大学数学とHTMLの勉強の為に問題と解答をまとめています。
+          </p>
+          <h3></h3>
+          <ul class="about-list">
+            <li><a href="#" class="arrow">このサイトについて</a></li>
+            <li><a href="#" class="arrow">プライバシーポリシー</a></li>
+          </ul>
+        </section>
+
+        <section class="item">
+          <h3 class="footer-title">Menu</h3>
+          <ul class="menu-list">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">分野</a></li>
+            <li><a href="#">このサイトについて</a></li>
+            <li><a href="#">難易度について</a></li>
+          </ul>
+        </section>
+
+        <section class="item">
+          <h3 class="footer-title">Twitter</h3>
+          <a class="twitter-timeline" data-height="315" href="https://twitter.com/TwitterJP?ref_src=twsrc%5Etfw">Tweets by TwitterJP</a>
+          <script async src="https://platform.twitter.com/widgets.js"></script>
+        </section>
+      </div>
+
+      <p class="copyright"></p>
+    </footer>
+  </body>
+</html>
