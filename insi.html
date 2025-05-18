@@ -70,22 +70,26 @@ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
         <button class="accordion">解答</button>
 <div class="panel">
   <p>行基本変形によって階段行列にする.</p>
-                    <p>\begin{pmatrix}
+                    <p>\begin{eqnarray}\begin{pmatrix}
 1 & 2 & 2 \\
 2 & 3 & 4 \\
 -1 & 1 & -2 \\
 3 & 0 & 6            
-\end{pmatrix} \(\to\) \begin{pmatrix}
+\end{pmatrix} \\
+\downarrow \\
+\begin{pmatrix}
 1 & 2 & 2 \\
 0 & -1 & 0 \\
 0 & 3 & 0 \\
 0 & -6 & 0            
-\end{pmatrix} \(\to\) \begin{pmatrix}
+\end{pmatrix} \\
+\downarrow \\
+\begin{pmatrix}
 1 & 2 & 2 \\
 0 & 1 & 0 \\
 0 & 0 & 0 \\
 0 & 0 & 0            
-\end{pmatrix}</p>
+\end{pmatrix}\end{eqnarray}</p>
   <p>よって \(\mathrm{rank}\) は\(2\).</p>
 </div>
         <br>
