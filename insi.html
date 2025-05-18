@@ -244,9 +244,9 @@ f(e_3) &=& 3e_1+4e_2
             <p>
               \(z=f(x,y),x=r\cos\theta,y=r\sin\theta\)とする.このとき
             </p>
-          <p>\begin{eqation}
+          <p>\begin{equation}
             \frac{\partial^2 z}{\partial x^2}+\frac{\partial^2 z}{\partial y^2}=\frac{\partial^2 z}{\partial r^2}+\frac{1}{r}\frac{\partial z}{\partial r}+\frac{1}{r^2}\frac{\partial^2 z}{\partial \theta^2}
-          \end{eqation}</p>
+          \end{equation}</p>
           <p>が成り立つことを示せ.</p>
            </div>
 
@@ -257,6 +257,39 @@ f(e_3) &=& 3e_1+4e_2
     
   </p>
 </div>
+        <div class="rmkbox">
+          <p>合成関数の偏微分は偏微分する関数から偏微分する文字まで辿る道を全て足す.</p>
+          <p>たとえば\(z=f(x,y),x=x(u,v),y=y(u,v)\)のとき</p>
+          <p>\begin{equation}
+            \frac{\partial z}{\partial u}=\frac{\partial z}{\partial x}\cdot \frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\cdot \frac{\partial y}{\partial u},
+            \end{equation}
+          </p>
+          <p>
+            \begin{equation}
+            \frac{\partial z}{\partial v}=\frac{\partial z}{\partial x}\cdot \frac{\partial x}{\partial v}+\frac{\partial z}{\partial y}\cdot \frac{\partial y}{\partial v}.
+            \end{equation}
+          </p>
+          <p>また二階偏微分は,</p>
+          <p>
+            \begin{eqnarray}
+            \frac{\partial^2 z}{\partial u^2}&=&\frac{\partial}{\partial u}\left(\frac{\partial z}{\partial u}\right) \\
+    &=& \frac{\partial}{\partial u}\left(\frac{\partial z}{\partial x}\cdot \frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\cdot \frac{\partial y}{\partial u}\right) \\
+    &=& \frac{\partial}{\partial u}\left(\frac{\partial z}{\partial x}\right)\cdot \frac{\partial x}{\partial u}+\frac{\partial z}{\partial x}\cdot \frac{\partial^2 x}{\partial u^2}+\frac{\partial}{\partial u}\left(\frac{\partial z}{\partial y}\right)\cdot \frac{\partial y}{\partial u}+\frac{\partial z}{\partial y}\cdot \frac{\partial^2 y}{\partial u^2}.
+            \end{eqnarray}
+          </p>
+          <p>
+            ここで \(\displaystyle{\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}}\)が合成関数なので再び連鎖律から
+          </p>
+          <p>
+            \begin{eqnarray}
+        \frac{\partial}{\partial u}\left(\frac{\partial z}{\partial x}\right) &=& \frac{\partial^2 z}{\partial x^2}\cdot \frac{\partial x}{\partial u}+\frac{\partial}{\partial y}\left(\frac{\partial z}{\partial x}\right)\cdot \frac{\partial y}{\partial u} \\
+        &=& \frac{\partial^2 z}{\partial x^2}\cdot \frac{\partial x}{\partial u}+\frac{\partial^2 z}{\partial y\partial x}\cdot \frac{\partial y}{\partial u}, \\
+        \frac{\partial}{\partial u}\left(\frac{\partial z}{\partial y}\right) &=& \frac{\partial}{\partial x}\left(\frac{\partial z}{\partial y}\right)\cdot \frac{\partial x}{\partial u}+\frac{\partial^2 z}{\partial y^2}\cdot \frac{\partial y}{\partial u} \\
+        &=& \frac{\partial^2 z}{\partial x\partial y}\cdot \frac{\partial x}{\partial u}+\frac{\partial^2 z}{\partial y^2}\cdot \frac{\partial y}{\partial u}
+    \end{eqnarray}
+          </p>
+          <p>であることに注意して</p>
+        </div>
         <br>
         <a href="#mokuji">目次に戻る</a>
 
