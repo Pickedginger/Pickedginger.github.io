@@ -518,3 +518,28 @@ h2 {
   overflow-x: scroll;
   border: solid 1px #696969;
 }
+
+/*アコーディオンボックス*/
+
+.accordion {
+      cursor: pointer;
+      padding: 10px;
+      background-color: #eee;
+      border: none;
+      outline: none;
+      width: 100%;
+      text-align: left;
+      transition: background-color 0.2s ease;
+      font-size: 16px;
+    }
+
+    .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .panel {
+      padding: 10px;
+      display: none;
+      background-color: #f1f1f1;
+      overflow: hidden;
+    }
