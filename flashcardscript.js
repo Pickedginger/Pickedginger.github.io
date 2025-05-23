@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 問題と解答をここに記述します。LaTeX記法が使えます。
     const problems = [
         {
-            question: "一次方程式 \(2x + 5 = 11\) を解きなさい。",
-            answer: "\(2x = 11 - 5 \\Rightarrow 2x = 6 \\Rightarrow x = 3\)"
+            question: "一次方程式 $2x + 5 = 11$ を解きなさい。",
+            answer: "$2x = 11 - 5 \\Rightarrow 2x = 6 \\Rightarrow x = 3$"
         },
         {
             question: "二次方程式 $x^2 - 4x + 4 = 0$ を解きなさい。",
