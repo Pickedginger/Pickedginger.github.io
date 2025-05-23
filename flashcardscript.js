@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
              question: "$X$ を空でない集合とする.関数$d$ が $X$ 上の距離関数であることの定義を述べよ.",
              answer: `次の3条件をみたすとき:
             <ol>
-                <li>任意の $x,y \in X$ に対して $d(x,y) \geq 0$ で,$d(x,y)=0 \Longrightleftarrow x=y.$</li>
-                <li>任意の $x,y \in X< に対して $d(x,y)=d(y,x).$/li>
-                <li>任意の $x,y,z \in X$ に対して $d(x,z) \leq d(x,y)+d(y,z).$</li>
+                <li>任意の $x,y \\in X$ に対して $d(x,y) \\geq 0$ で,$d(x,y)=0 \\Longrightleftarrow x=y.$</li>
+                <li>任意の $x,y \\in X$ に対して $d(x,y)=d(y,x).$</li>
+                <li>任意の $x,y,z \\in X$ に対して $d(x,z) \\leq d(x,y)+d(y,z).$</li>
             </ol>
         `,
              tags: ["位相空間","距離空間"]
