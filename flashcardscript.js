@@ -36,6 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
             question: "連立方程式 $x+y=5, x-y=1$ を解きなさい。",
             answer: "$x=3, y=2$",
             tags: ["方程式"]
+        },
+        {
+             question: "$X$ を空でない集合とする.関数$d$ が $X$ 上の距離関数であることの定義を述べよ.",
+             answer: `次の3条件をみたすとき:
+            <ol>
+                <li>任意の $x,y \in X$ に対して $d(x,y) \geq 0$ で,$d(x,y)=0 \Longrightleftarrow x=y.$</li>
+                <li>任意の $x,y \in X< に対して $d(x,y)=d(y,x).$/li>
+                <li>任意の $x,y,z \in X$ に対して $d(x,z) \leq d(x,y)+d(y,z).$</li>
+            </ol>
+        `,
+             tags: ["位相空間","距離空間"]
         }
         // 他の問題をここに追加できます
         // {
