@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数学フラッシュカード</title>
     <link rel="stylesheet" href="flashcardstyle.css">
-     <script>
+    <script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']] // デフォルトのインライン数式設定 ($...$ と \(...\) を有効に)
@@ -20,7 +20,16 @@
 <body>
     <div class="container">
         <h1>数学フラッシュカード</h1>
-        <div id="flashcard">
+
+        <div id="tagSelection" class="selection-section">
+            <p>学習したい分野を選択してください:</p>
+            <select id="tagSelect">
+                <option value="all">全ての分野</option>
+                </select>
+            <button id="startQuizBtn" class="btn">学習開始</button>
+        </div>
+
+        <div id="flashcard" style="display: none;">
             <div id="question" class="math-problem"></div>
             <div class="accordion">
                 <button class="accordion-header">解答を見る</button>
@@ -33,6 +42,7 @@
                 <button id="unsolvedBtn" class="btn">わからない</button>
             </div>
         </div>
+
         <div id="completionMessage" style="display: none;">
             <p>全てのカードを終えました！</p>
             <button id="restartBtn" class="btn">もう一度最初から</button>
