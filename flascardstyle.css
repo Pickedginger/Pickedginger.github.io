@@ -1,0 +1,146 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+#flashcard {
+    border: 1px solid #e0e0e0;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fdfdfd;
+}
+
+.math-problem, .math-solution {
+    min-height: 50px; /* 数式表示のために最低限の高さを確保 */
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    word-wrap: break-word; /* 長い数式がはみ出さないように */
+    overflow-x: auto; /* 横に長い数式のためにスクロール可能に */
+}
+
+/* アコーディオンのスタイル */
+.accordion-header {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 12px 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1em;
+    transition: 0.4s;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.accordion-header:hover {
+    background-color: #45a049;
+}
+
+.accordion-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.accordion-content.active {
+    max-height: 200px; /* 十分な高さに設定 */
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+}
+
+/* ボタンのスタイル */
+.buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+#solvedBtn {
+    background-color: #28a745;
+}
+
+#solvedBtn:hover {
+    background-color: #218838;
+}
+
+#unsolvedBtn {
+    background-color: #dc3545;
+}
+
+#unsolvedBtn:hover {
+    background-color: #c82333;
+}
+
+#completionMessage {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e9f7ef;
+    border: 1px solid #d4edda;
+    border-radius: 8px;
+    color: #155724;
+}
+
+#completionMessage p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+#restartBtn {
+    background-color: #6c757d;
+}
+
+#restartBtn:hover {
+    background-color: #5a6268;
+}
+
+/* MathJaxの表示調整 */
+.math-problem .MathJax, .math-solution .MathJax {
+    font-size: 1.2em !important;
+}
