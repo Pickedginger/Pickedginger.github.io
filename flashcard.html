@@ -8,7 +8,7 @@
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']] // デフォルトのインライン数式設定 ($...$ と \(...\) を有効に)
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
             },
             svg: {
                 fontCache: 'global'
@@ -21,31 +21,47 @@
     <div class="container">
         <h1>数学フラッシュカード</h1>
 
-        <div id="tagSelection" class="selection-section">
-            <p>学習したい分野を選択してください:</p>
-            <select id="tagSelect">
-                <option value="all">全ての分野</option>
-                </select>
-            <button id="startQuizBtn" class="btn">学習開始</button>
-        </div>
-
-        <div id="flashcard" style="display: none;">
-            <div id="question" class="math-problem"></div>
-            <div class="accordion">
-                <button class="accordion-header">解答を見る</button>
-                <div class="accordion-content">
-                    <div id="answer" class="math-solution"></div>
+        <div id="flashcardAppSection">
+            <div id="tagSelection" class="selection-section">
+                <p>学習したい分野を選択してください:</p>
+                <select id="tagSelect">
+                    <option value="all">全ての分野</option>
+                    </select>
+                <div class="selection-buttons">
+                    <button id="startQuizBtn" class="btn">学習開始</button>
+                    <button id="viewListBtn" class="btn secondary-btn">一覧で確認</button>
+                </div>
+                <div class="back-to-home selection-home-button">
+                    <button class="btn home-btn" onclick="location.href='index.html'">ホームページに戻る</button>
                 </div>
             </div>
-            <div class="buttons">
-                <button id="solvedBtn" class="btn">解けた</button>
-                <button id="unsolvedBtn" class="btn">わからない</button>
-            </div>
-        </div>
 
-        <div id="completionMessage" style="display: none;">
-            <p>全てのカードを終えました！</p>
-            <button id="restartBtn" class="btn">もう一度最初から</button>
+            <div id="flashcard" style="display: none;">
+                <div id="question" class="math-problem"></div>
+                <div class="accordion">
+                    <button class="accordion-header">解答を見る</button>
+                    <div class="accordion-content">
+                        <div id="answer" class="math-solution"></div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button id="solvedBtn" class="btn">解けた</button>
+                    <button id="unsolvedBtn" class="btn">わからない</button>
+                </div>
+                <div class="return-buttons-group">
+                    <button class="btn return-btn" onclick="location.href='flashcard.html'">分野選択に戻る</button>
+                    <button class="btn home-btn" onclick="location.href='index.html'">ホームページに戻る</button>
+                </div>
+            </div>
+
+            <div id="completionMessage" style="display: none;">
+                <p>全てのカードを終えました！</p>
+                <button id="restartBtn" class="btn">もう一度最初から</button>
+                <div class="return-buttons-group">
+                    <button class="btn return-btn" onclick="location.href='flashcard.html'">分野選択に戻る</button>
+                    <button class="btn home-btn" onclick="location.href='index.html'">ホームページに戻る</button>
+                </div>
+            </div>
         </div>
     </div>
 

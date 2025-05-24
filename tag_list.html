@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問題一覧</title>
+    <link rel="stylesheet" href="flashcardstyle.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="./MathJax/tex-chtml.js"></script>
+</head>
+<body>
+    <div class="problem-list-container">
+        <h2 id="listTitle">問題一覧</h2>
+        <div id="problemList">
+            </div>
+        <div class="return-buttons-group">
+            <button class="btn return-btn" onclick="location.href='flashcard.html'">分野選択に戻る</button>
+            <button class="btn home-btn" onclick="location.href='index.html'">ホームページに戻る</button>
+        </div>
+    </div>
+
+    <script src="tag_list_script.js"></script>
+</body>
+</html>

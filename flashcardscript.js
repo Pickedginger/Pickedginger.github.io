@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 問題と解答のデータ
+    // 問題と解答のデータ (共通のデータソース)
     // 各問題に 'tags' プロパティを追加し、配列でタグを指定します。
     const problems = [
         {
@@ -46,8 +46,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li>任意の $x,y,z \\in X$ に対して $d(x,z) \\leq d(x,y)+d(y,z).$</li>
             </ol>
         `,
-             tags: ["位相空間","距離空間"]
+             tags: ["距離空間"]
+        },
+        {
+             question: `$(X,d)$ を距離空間, $x \\subset X$ とする.
+             <ol>
+                <li>$B \\subset X$ が点 $x$ の $\\varepsilon$ 近傍$B(x;\\varepsilon)$</li>
+                <li>$O \\subset X$ が開集合</li>
+                <li>$F \\subset X$ が閉集合</li>
+                <li>$U \\subset X$ が点 $x$ の近傍</li>
+                <li>点 $x$ に対し $\\mathcal{N}(x)$ を $x$ の近傍系とする.このとき $\\mathcal{B}(x) \\subset \\mathcal{N}(x)$ が $x$ の基本近傍系</li>
+                <li>$x$ が $A$ の内点</li>
+                <li>$x$ が $A$ の外点</li>
+                <li>$x$ が $A$ の境界点</li>
+                <li>$x$ が $A$ の集積点</li>
+                <li>$x$ が $A$ の孤立点</li>
+             </ol>
+        `,
+             answer: `
+             <ol>
+                <li>$B(x;\\varepsilon)=\\{y \\in X|d(x,y)<\\varepsilon\\}$</li>
+                <li>$O$ の任意の点が内点</li>
+                <li>$F$ の補集合が開集合</li>
+                <li>$x$ が $U$ の内点である</li>
+                <li>任意の $N \\in \\mathcal{N}(x)$ に対しある $B \\in \\mathcal{B}(x)$ が存在して $x \\in B \\subset N$</li>
+                <li>ある $\\varepsilon>0$ が存在して $B(x;\\varepsilon) \\subset A$</li>
+                <li>任意の $\\varepsilon>0$ について $B(x;\\varepsilon) \\cap A^c = \\emptyset$</li>
+                <li>任意の $\\varepsilon>0$ について $B(x;\\varepsilon) \\cap A^c = \\emptyset,~B(x;\\varepsilon) \\cap A = \\emptyset$</li>
+                <li>ある数列 $\\{a_n\\}_n \\subset A \\setminus \\{x\\}$ が存在して $a_n \\to x$ をみたすとき</li>
+                <li>$x$ が $A$ の集積点でない</li>
+             </ol>
+        `,
+             tags: ["距離空間"]
+        },
+        {
+            question: "距離空間 $(X,d)$ の点列 $\\{x_n\\}_n$ が点 $a \\in X$ に収束することの定義を述べよ.",
+            answer: "任意の $\\varepsilon>0$ に対してある $N \\in \\mathbb{N}$ が存在して, $n \\geq N$ ならば$d(x_n,a)<\\varepsilon.$",
+            tags: ["距離空間"]
         }
+        
         // 他の問題をここに追加できます
         // {
         //     question: "新しい問題のLaTeX記法",
@@ -55,6 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
         //     tags: ["新しいタグ", "複数タグ"]
         // }
     ];
+
+    // Problemsデータは他のスクリプトからもアクセスできるよう、グローバル変数として定義
+    // ただし、直接HTMLに埋め込む代わりに、windowオブジェクトにアタッチするなどして共有するのがより良い方法です。
+    // 今回はシンプルにするため、両方のJSファイルでproblems配列を定義し、内容が同一であることを前提とします。
+    // もし大規模なアプリにするなら、外部JSONファイルから読み込むなどの方法を検討してください。
 
     let currentProblems = []; // 現在出題される問題のリスト
     let unsolvedProblems = []; // わからなかった問題のリスト
@@ -72,9 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const completionMessageDiv = document.getElementById('completionMessage');
     const restartBtn = document.getElementById('restartBtn');
 
-    const tagSelectionDiv = document.getElementById('tagSelection'); // 新規
-    const tagSelect = document.getElementById('tagSelect');         // 新規
-    const startQuizBtn = document.getElementById('startQuizBtn');   // 新規
+    const tagSelectionDiv = document.getElementById('tagSelection');
+    const tagSelect = document.getElementById('tagSelect');
+    const startQuizBtn = document.getElementById('startQuizBtn');
+    const viewListBtn = document.getElementById('viewListBtn'); // 新規
 
     // 問題をシャッフルする関数
     function shuffleArray(array) {
@@ -91,6 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
         problems.forEach(problem => {
             problem.tags.forEach(tag => allTags.add(tag));
         });
+
+        // 既存のオプションをクリア（「全ての分野」以外）
+        while (tagSelect.options.length > 1) { // 最初のオプション（「全ての分野」）は残す
+            tagSelect.remove(1);
+        }
 
         // タグをソートしてoptionに追加
         Array.from(allTags).sort().forEach(tag => {
@@ -132,8 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 全ての問題を解き終えた場合
                 flashcardDiv.style.display = 'none';
                 completionMessageDiv.style.display = 'block';
-                // 全てのカードを終えたら、タグ選択画面に戻るオプションも
-                // restartBtn.textContent = '別の分野で学習する';
             }
         }
     }
@@ -148,9 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (filteredProblems.length === 0) {
             alert(`選択されたタグ「${selectedTag}」に問題がありません。別のタグを選択してください。`);
-            tagSelectionDiv.style.display = 'block'; // タグ選択画面に戻す
-            flashcardDiv.style.display = 'none';
-            completionMessageDiv.style.display = 'none';
+            returnToTagSelection(); // タグ選択画面に戻る
             return; // クイズ開始を中止
         }
 
@@ -163,6 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
         completionMessageDiv.style.display = 'none';
         displayNextProblem();
     }
+
+    // タグ選択画面に戻る共通関数
+    function returnToTagSelection() {
+        tagSelectionDiv.style.display = 'block';
+        flashcardDiv.style.display = 'none';
+        completionMessageDiv.style.display = 'none';
+        tagSelect.value = "all"; // 選択をリセット
+        selectedTag = "all";
+    }
+
 
     // イベントリスナー
     accordionHeader.addEventListener('click', () => {
@@ -186,12 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     restartBtn.addEventListener('click', () => {
-        // 全てのカードを終えた後、タグ選択画面に戻る
-        tagSelectionDiv.style.display = 'block';
-        flashcardDiv.style.display = 'none';
-        completionMessageDiv.style.display = 'none';
-        tagSelect.value = "all"; // 選択をリセット
-        selectedTag = "all";
+        returnToTagSelection();
     });
 
     // 新規イベントリスナー
@@ -202,6 +251,12 @@ document.addEventListener('DOMContentLoaded', () => {
     startQuizBtn.addEventListener('click', () => {
         initializeQuiz();
     });
+
+    viewListBtn.addEventListener('click', () => {
+        const url = `tag_list.html?tag=${encodeURIComponent(selectedTag)}`;
+        location.href = url;
+    });
+
 
     // アプリケーション起動時にタグ選択オプションを生成し、タグ選択画面を表示
     populateTagSelect();
