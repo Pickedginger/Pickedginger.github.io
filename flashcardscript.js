@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 問題と解答のデータ (共通のデータソース)
-    // 各問題に 'tags' プロパティを追加し、配列でタグを指定します。
     const problems = [
         {
             question: "一次方程式 $2x + 5 = 11$ を解きなさい。",
@@ -93,15 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // }
     ];
 
-    // Problemsデータは他のスクリプトからもアクセスできるよう、グローバル変数として定義
-    // ただし、直接HTMLに埋め込む代わりに、windowオブジェクトにアタッチするなどして共有するのがより良い方法です。
-    // 今回はシンプルにするため、両方のJSファイルでproblems配列を定義し、内容が同一であることを前提とします。
-    // もし大規模なアプリにするなら、外部JSONファイルから読み込むなどの方法を検討してください。
-
     let currentProblems = []; // 現在出題される問題のリスト
-    let unsolvedProblems = []; // わからなかった問題のリスト
+    let unsolvedProblems = []; // わからなかった問題のリスト (5問モード用)
     let currentIndex = 0; // 現在の問題のインデックス
     let selectedTag = "all"; // 選択されたタグ (初期値は"all"で全ての分野)
+    let quizMode = "all"; // 出題形式 (初期値は"all"で全問出題)
 
     // DOM要素の取得
     const questionDiv = document.getElementById('question');
@@ -117,7 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagSelectionDiv = document.getElementById('tagSelection');
     const tagSelect = document.getElementById('tagSelect');
     const startQuizBtn = document.getElementById('startQuizBtn');
-    const viewListBtn = document.getElementById('viewListBtn'); // 新規
+    const viewListBtn = document.getElementById('viewListBtn');
+
+    const quizModeRadios = document.querySelectorAll('input[name="quizMode"]'); // 新規
 
     // 問題をシャッフルする関数
     function shuffleArray(array) {
@@ -170,14 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // 全ての問題を終えた場合
-            if (unsolvedProblems.length > 0) {
-                // わからなかった問題があれば、それを再度出題
+            if (quizMode === "5" && unsolvedProblems.length > 0) {
+                // 5問モードで、わからなかった問題があれば、それを再度出題
+                alert(`5問中、${unsolvedProblems.length}問が未解決です。もう一度出題します。`);
                 currentProblems = shuffleArray([...unsolvedProblems]); // コピーしてシャッフル
                 unsolvedProblems = []; // リセット
                 currentIndex = 0;
                 displayNextProblem();
             } else {
-                // 全ての問題を解き終えた場合
+                // 全ての問題を解き終えた場合 (または全問モードで終了)
                 flashcardDiv.style.display = 'none';
                 completionMessageDiv.style.display = 'block';
             }
@@ -198,8 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return; // クイズ開始を中止
         }
 
-        currentProblems = shuffleArray([...filteredProblems]); // フィルタリングされた問題をコピーしてシャッフル
-        unsolvedProblems = [];
+        // 5問モードの場合の処理
+        if (quizMode === "5") {
+            if (filteredProblems.length <= 5) {
+                // 5問未満なら全て出題
+                currentProblems = shuffleArray([...filteredProblems]);
+                alert(`「${selectedTag}」には${filteredProblems.length}問しかありません。全ての${filteredProblems.length}問を出題します。`);
+            } else {
+                // 5問ランダムに抽選
+                const shuffledFilteredProblems = shuffleArray([...filteredProblems]);
+                currentProblems = shuffledFilteredProblems.slice(0, 5);
+            }
+            unsolvedProblems = []; // 5問モードでは未解決問題リストをリセット
+        } else {
+            // 全問モードの場合
+            currentProblems = shuffleArray([...filteredProblems]);
+        }
+
         currentIndex = 0;
 
         tagSelectionDiv.style.display = 'none'; // タグ選択画面を非表示に
@@ -215,8 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
         completionMessageDiv.style.display = 'none';
         tagSelect.value = "all"; // 選択をリセット
         selectedTag = "all";
+        // ラジオボタンもデフォルトに戻す
+        document.getElementById('modeAll').checked = true;
+        quizMode = "all";
     }
-
 
     // イベントリスナー
     accordionHeader.addEventListener('click', () => {
@@ -234,7 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     unsolvedBtn.addEventListener('click', () => {
-        unsolvedProblems.push(currentProblems[currentIndex]); // わからなかった問題を追加
+        // 5問モードの場合のみ未解決リストに追加
+        if (quizMode === "5") {
+            unsolvedProblems.push(currentProblems[currentIndex]);
+        }
         currentIndex++;
         displayNextProblem();
     });
@@ -248,6 +266,13 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedTag = event.target.value;
     });
 
+    // ラジオボタンの変更を監視
+    quizModeRadios.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+            quizMode = event.target.value;
+        });
+    });
+
     startQuizBtn.addEventListener('click', () => {
         initializeQuiz();
     });
@@ -256,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = `tag_list.html?tag=${encodeURIComponent(selectedTag)}`;
         location.href = url;
     });
-
 
     // アプリケーション起動時にタグ選択オプションを生成し、タグ選択画面を表示
     populateTagSelect();
