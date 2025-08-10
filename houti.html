@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確率的放置ゲーム</title>
+    <link rel="stylesheet" href="houtistyle.css">
+</head>
+<body>
+    <h1>確率的放置ゲーム 💰</h1>
+
+    <div class="container">
+        <h2>資産</h2>
+        <p>現在のお金: <span id="money-display">0</span> 円</p>
+    </div>
+    
+    <div class="container">
+        <h2>モデル1: コイン投げ</h2>
+        <p>現在の速度: <span id="cycle-time-display">1.00</span>秒あたり <span id="coin-speed-display">0</span> 回</p>
+        <p>現在の報酬: 表で <span id="coin-reward-display">1</span> 円獲得</p>
+        <p>現在の確率: 表が出る確率 <span id="coin-probability-display">50.00</span>%</p>
+        <p><strong>収入期待値/秒: 約 <span id="coin-income-per-second">0.00</span> 円</strong></p>
+        <button id="flip-coin-button">コインを投げる！ (手動)</button>
+        <br/><br/>
+        <button id="automate-coin-button">自動化する (コスト: 10円)</button>
+        <button id="upgrade-speed-button" style="display: none;">速度アップ (コスト: <span id="upgrade-cost-display">25</span>円)</button>
+        <button id="upgrade-speed-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+        <span id="upgrade-speed-cost-x10" style="display: none;"> (コスト: 0円)</span>
+        <button id="upgrade-reward-button" style="display: none;">報酬アップ (コスト: <span id="reward-upgrade-cost-display">40</span>円)</button>
+        <button id="upgrade-reward-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+        <span id="upgrade-reward-cost-x10" style="display: none;"> (コスト: 0円)</span>
+        <button id="upgrade-frequency-button" style="display: none;">頻度アップ (コスト: <span id="frequency-upgrade-cost-display">100</span>円)</button>
+        <button id="upgrade-frequency-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+        <span id="upgrade-frequency-cost-x10" style="display: none;"> (コスト: 0円)</span>
+        <button id="upgrade-probability-button" style="display: none;">確率操作 (コスト: <span id="probability-upgrade-cost-display">1000</span>円)</button>
+        <button id="upgrade-probability-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+        <span id="upgrade-probability-cost-x10" style="display: none;"> (コスト: 0円)</span>
+        <button id="pause-resume-button" style="display: none;">一時停止</button>
+        <p>結果: <span id="coin-result-display">-</span></p>
+    </div>
+
+    <div class="container" id="dice-model-container">
+        <h2>モデル2: サイコロ投げ</h2>
+        <div id="dice-unlock-section">
+            <p>新しい確率モデルを研究します。</p>
+            <button id="unlock-dice-button">アンロック (コスト: <span id="dice-unlock-cost">500</span>円)</button>
+        </div>
+        <div id="dice-main-section" style="display: none;">
+            <p>現在の速度: <span id="dice-cycle-time-display">1.00</span>秒あたり <span id="dice-speed-display">0</span> 回</p>
+            <p>現在の報酬: 出目 × <span id="dice-reward-display">1</span></p>
+            <p>現在のサイコロ: <span id="dice-sides-display">6</span>面体</p>
+            <p><strong>収入期待値/秒: 約 <span id="dice-income-per-second">0.00</span> 円</strong></p>
+            <button id="roll-dice-button">サイコロを振る！ (手動)</button>
+            <br/><br/>
+            <button id="automate-dice-button">自動化する (コスト: 50円)</button>
+            <button id="upgrade-dice-speed-button" style="display: none;">速度アップ (コスト: <span id="dice-speed-upgrade-cost-display">100</span>円)</button>
+            <button id="upgrade-dice-speed-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+            <span id="upgrade-dice-speed-cost-x10" style="display: none;"> (コスト: 0円)</span>
+            <button id="upgrade-dice-reward-button" style="display: none;">報酬アップ (コスト: <span id="dice-reward-upgrade-cost-display">200</span>円)</button>
+            <button id="upgrade-dice-reward-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+            <span id="upgrade-dice-reward-cost-x10" style="display: none;"> (コスト: 0円)</span>
+            <button id="upgrade-dice-frequency-button" style="display: none;">頻度アップ (コスト: <span id="dice-frequency-upgrade-cost-display">500</span>円)</button>
+            <button id="upgrade-dice-frequency-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+            <span id="upgrade-dice-frequency-cost-x10" style="display: none;"> (コスト: 0円)</span>
+            <button id="upgrade-dice-sides-button" style="display: none;">サイコロ変更 (コスト: <span id="sides-upgrade-cost-display">2000</span>円)</button>
+            <button id="upgrade-dice-sides-button-x10" class="buy-multiplier-button" style="display: none;">x10</button>
+            <span id="upgrade-dice-sides-cost-x10" style="display: none;"> (コスト: 0円)</span>
+            <button id="pause-resume-button-dice" style="display: none;">一時停止</button>
+            <p>結果: <span id="dice-result-display">-</span></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>ミッション</h2>
+        <ul id="mission-list"></ul>
+    </div>
+
+    <div class="container" id="prestige-container" style="display: none;">
+        <h2>プレステージ</h2>
+        <p>現在の名声ポイント: <span id="prestige-points-display">0</span></p>
+        <p>現在の所持金に基づき、リセット時に <span id="prestige-points-on-reset">0</span> の名声ポイントを獲得します。</p>
+        <button id="prestige-button">プレステージを実行する</button>
+    </div>
+
+    <div class="container" id="prestige-shop-container" style="display: none;">
+    <h2>名声アップグレード</h2>
+    
+    <p><b>現在の名声ポイント: <span id="prestige-points-shop-display">0</span> PP</b></p>
+    
+    <div class="upgrade-item">
+        <p><b>名声の力:</b> 全ての収入が永久に強化される。</p>
+        <p>現在レベル: <span id="income-multiplier-level">0</span> (効果: +<span id="income-multiplier-effect">0</span>%)</p>
+        <button id="buy-income-multiplier">購入 (コスト: <span id="income-multiplier-cost">1</span> PP)</button>
+    </div>
+</div>
+    
+    <div class="container debug-container">
+        <h2>デバッグメニュー</h2>
+        <input type="number" id="debug-money-input" placeholder="欲しい金額を入力">
+        <button id="add-money-button">お金を追加</button>
+        <button id="reset-save-button">セーブをリセット</button>
+    </div>
+    
+    <script src="houtiscript.js"></script>
+</body>
+</html>
