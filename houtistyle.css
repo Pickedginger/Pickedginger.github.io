@@ -1,0 +1,54 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.debug-container {
+    border-color: #f44336; /* 枠線を赤っぽくする */
+}
+
+#mission-list li.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+button.disabled {
+    background-color: #a0a0a0; /* 背景を灰色に */
+    border-color: #888;
+    cursor: not-allowed; /* カーソルを禁止マークに */
+}
+
+/* ...（既存のCSSはそのまま）... */
+
+.buy-multiplier-button {
+    padding: 10px 8px; /* 少し小さくする */
+    font-size: 14px;
+    margin-left: 5px; /* 左側に少し余白を設ける */
+}
